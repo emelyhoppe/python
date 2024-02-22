@@ -1,0 +1,31 @@
+import random
+
+def jogo_adiv():
+        numero_secreto= random.randint(1,10)
+        tentativa = 0
+        max_tentativa = 5
+        
+        print ("Bem vindo ao Jogo da adivinhação")
+        print (numero_secreto)
+        
+        while tentativa < max_tentativa:
+            palpite = int(input("Digite um número"))
+            
+            tentativa += 1
+            
+            if palpite == numero_secreto:
+                print("Você acertou. Parabéns.")
+                break
+            elif palpite > numero_secreto:
+                print ("O número secreto é menor. Tente novamete.")
+            else:
+                print("O número secreto é maior. Tente novamete.")
+                
+        if tentativa < max_tentativa:
+            print(f"Você ainda tem {tentativa} tentativas.")
+        else:
+            print(f"Acabaram suas tentativas. O número secreto era: {numero_secreto}")
+            
+        print ("Fim de jogo. Começar novamente?")
+if __name__ == "__main__":
+    jogo_adiv()
