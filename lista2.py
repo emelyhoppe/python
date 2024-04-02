@@ -19,6 +19,24 @@ def gravar_lista(lista):
              arquivo.write(item + "\n")
     print("GRAVADO", {nome_arq})
 
+def carregar_lista(lista):
+    nome_arq = input("Digite o nome do arquivo que você deseja carregar: ")
+    try: 
+        with open (nome_arq,"r") as arquivo:
+            lista.clear()
+            for linha in arquivo:
+                lista.append(linha.strip())
+        print("LISTA CARREGADA COM SUCESSO", {nome_arq})
+
+    except FileNotFoundError:
+        print("O arquivo não foi encontrado, tente novamente.")
+    except Exception as e:
+        print("Ocorreu um erro", e)
+
+def ordenar_lista(lista):
+    lista.sort(reverse = True)
+    print("Lista ordenada com sucesso!")
+
 def menu_principal():
 
     lista = []
@@ -31,7 +49,9 @@ def menu_principal():
         print ("2 - eliminar item da lista")
         print ("3 - mostrar a lista")
         print ("4 - gravar lista")
-        print ("5 - Sair")
+        print ("5 - carregar lista")
+        print ("6 - ordenar lista")
+        print ("7 - Sair")
 
         opcoes = (input("Sua escolha: "))
 
@@ -44,6 +64,10 @@ def menu_principal():
         elif opcoes == "4":
              gravar_lista(lista)
         elif opcoes == "5":
+            carregar_lista(lista)
+        elif opcoes == "6":
+            ordenar_lista(lista)
+        elif opcoes == "7":
             continuar = False
         else:
             print ("Dados inválidos, tente novamente.")
